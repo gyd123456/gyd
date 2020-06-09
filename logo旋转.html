@@ -1,0 +1,97 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-09 12:22:56
+ * @LastEditTime: 2020-06-09 15:49:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Vscode软件文件f:\桌面\渡一\403-day (5)\logo旋转.html
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logo旋转特效</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            /* 初始化内外边距 */
+        }
+        #box{
+            width: 1000px ;
+            height: 500px ;
+            border: 1px solid #000000;    
+            position: absolute;
+            left: calc(50% - 500px);
+            top:  calc(50% - 250px);
+            /* 宽度计算赋值,使盒子居中 */
+        }
+        #box div{
+            position: relative;
+            /* 父类开启定位，供img使用 */
+            display: inline-block;
+            /* 转换行内块格式，使div横向排列 */
+            width: 173px;
+            height: 100px;
+            /* 根据几何计算得出长方形盒子宽高 */
+            background-color: rgba(0, 0, 0, .5);
+            /*设置颜色和透明度*/
+            margin-top: 100px;
+            /* div上下margin共享 */
+            margin-left: 56px;
+
+        }
+        #box div::before{
+            content: '';
+            position: absolute;
+            width: 173px;
+            height: 100px;
+            background-color: rgb(0,0,0,0.5);
+            transform: rotate(-60deg);
+            /* 旋转-60度 */
+        }
+        #box div::after{
+            content: '';
+            position: absolute;
+            width: 173px;
+            height: 100px;
+            left: 0px;
+            background-color: rgb(0,0,0,0.5);
+            transform: rotate(60deg);
+            /* 旋转60度 */
+            
+        }
+        img{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            z-index: 5;
+            /* 将img置于上层 */
+            border-radius: 50%;
+            /* 边框设置为圆角 */
+            left: 36px;
+            /* 相对原位置右移 */
+            transition: transform 1s;
+            /* 设定变换时间 */
+        }
+        img:hover{
+            transform: rotateZ(360deg);
+            /* 鼠标悬停时z轴旋转360度，需配合transition使用 */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div><img src="img/1.jpg" alt=""></div>
+        <div><img src="img/2.jpg" alt=""></div>
+        <div><img src="img/3.jpg" alt=""></div>
+        <div><img src="img/4.jpg" alt=""></div>
+        <div><img src="img/5.jpg" alt=""></div>
+        <div><img src="img/6.png" alt=""></div>
+        <div><img src="img/7.jpg" alt=""></div>
+        <div><img src="img/8.jpg" alt=""></div>
+    </div>
+</body>
+</html>
